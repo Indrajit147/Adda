@@ -1,0 +1,45 @@
+﻿<div class="hidden lg:p-20" id="create-status" uk-modal="">
+    <div class="uk-modal-dialog -bottom-1 relative overflow-hidden mx-auto bg-white shadow-xl rounded-lg md:w-[520px] w-full">
+        <div class="text-center py-4 border-b mb-0">
+            <h2 class="text-sm font-medium text-black">Create Status</h2>
+
+            <button type="button" class="button-icon absolute top-0 right-0 m-2.5 uk-modal-close">
+                <svg fill="#000000" viewBox="0 0 24 24" id="cross" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" class="icon flat-color w-6 h-6"><path id="primary" d="M13.41,12l6.3-6.29a1,1,0,1,0-1.42-1.42L12,10.59,5.71,4.29A1,1,0,0,0,4.29,5.71L10.59,12l-6.3,6.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l6.29,6.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z" style="fill: rgb(0, 0, 0);"></path></svg>
+            </button>
+
+        </div>
+
+
+        <form>
+            <div class="space-y-5 mt-3 p-2">
+                <textarea name="content"
+                      rows="4"
+                      placeholder="What's on your mind?"
+                      class="w-full text-black bg-white border-none outline-none focus:ring-0 resize-none text-lg"
+                      style="::placeholder { color: #6b7280; opacity: 1; }">
+                </textarea>
+
+            </div>
+            <div class="flex items-center gap-2 text-sm py-2 px-4 font-medium flex-wrap">
+                <input id="imageUpload" type="file" class="hidden" name="uploadedContent" accept="image/png, image/jpeg"/>
+                <div id="imagePreviewContainer" class="hidden">
+                    <img id="imagePreview" src="# " class="w-full h-auto rounded"/>
+                    
+                </div>
+                <button type="button" id="imageUploadBtn" class="flex items-center gap-1.5 bg-sky-50 text-sky-600 rounded-full py-1 px-2 border-2 border-sky-100">
+                    <ion-icon name="image" class="text-base"></ion-icon> Image
+                </button>
+
+            </div>
+            <div class="p-5 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <button type="submit" class="button bg-blue-500 text-white py-2 px-12 text-[14px]">
+                        Create
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
