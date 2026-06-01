@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace AddaApp.Migrations
+namespace Adda.Migrations
 {
     /// <inheritdoc />
     public partial class Changed_PostId_Id : Migration

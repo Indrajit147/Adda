@@ -1,7 +1,6 @@
-﻿using AddaApp.Data.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace AddaApp.Data
+namespace Adda.Data
 {
     public class AppDbContext:DbContext
     {
@@ -11,7 +10,6 @@ namespace AddaApp.Data
              
         }
 
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Models.Post> Posts { get; set; }
     }
 }
