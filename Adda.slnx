@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Adda/Adda.csproj" />
+  <Project Path="AddaApp.Data/AddaApp.Data.csproj" Id="76818040-f59e-4ee5-9743-21428e4dec15" />
 </Solution>
