@@ -1,4 +1,3 @@
-
 using Adda.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Database Configuration
-var dbConnectionString = builder.Configuration.GetConnectionString("Default");
+string dbConnectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(dbConnectionString));
 
 var app = builder.Build();

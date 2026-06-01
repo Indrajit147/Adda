@@ -20,8 +20,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AddaApp.Data\AddaApp.Data.csproj" />
-  </ItemGroup>
-
 </Project>
