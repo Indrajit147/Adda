@@ -1,5 +1,5 @@
 
-using Adda.Data;
+using AddaApp.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Adda.Data.Models
+namespace AddaApp.Data.Models
 {
     public class Post
     {
