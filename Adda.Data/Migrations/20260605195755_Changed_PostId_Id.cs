@@ -10,19 +10,25 @@ namespace Adda.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "PostId",
-                table: "Posts",
-                newName: "Id");
+            migrationBuilder.Sql(sql: @"
+                IF COL_LENGTH('dbo.Posts', 'PostId') IS NOT NULL
+                    AND COL_LENGTH('dbo.Posts', 'Id') IS NULL
+                BEGIN
+                    EXEC sp_rename 'dbo.Posts.PostId', 'Id', 'COLUMN';
+                END
+                ");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Id",
-                table: "Posts",
-                newName: "PostId");
+            migrationBuilder.Sql(sql: @"
+                IF COL_LENGTH('dbo.Posts', 'Id') IS NOT NULL
+                    AND COL_LENGTH('dbo.Posts', 'PostId') IS NULL
+                BEGIN
+                    EXEC sp_rename 'dbo.Posts.Id', 'PostId', 'COLUMN';
+                END
+                ");
         }
     }
 }

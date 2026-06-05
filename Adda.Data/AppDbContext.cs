@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Adda.Data.Models;
 
 namespace Adda.Data
 {
@@ -10,6 +11,7 @@ namespace Adda.Data
              
         }
 
-        public DbSet<Models.Post> Posts { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
