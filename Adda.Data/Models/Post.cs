@@ -13,5 +13,10 @@ namespace Adda.Data.Models
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
 
+        //Foreign key to the User who created the post
+        public int UserId { get; set; }
+
+        //Navigation property to the User
+        public User User { get; set; }
     }
 }
