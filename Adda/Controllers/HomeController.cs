@@ -22,7 +22,7 @@ namespace Adda.Controllers
                 .ToListAsync();
 
 
-            return View();
+            return View(allPosts);
         }
     }
 }
