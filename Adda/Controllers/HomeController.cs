@@ -20,6 +20,7 @@ namespace Adda.Controllers
         public async Task<IActionResult> Index()
         {
             var allPosts = await _context.Posts
+                .OrderByDescending(p => p.DateCreated)
                 .Include(n => n.User)
                 .ToListAsync();
 
