@@ -22,7 +22,8 @@ namespace Adda.Controllers
             var allPosts = await _context.Posts
                 .OrderByDescending(n => n.DateCreated)
                 .Include(n => n.User)
-                .Include(n => n.Likes)                
+                .Include(n => n.Likes)    
+                .Include(n => n.Comments).ThenInclude(n=> n.User)
                 .ToListAsync();
             return View(allPosts);
         }
@@ -101,5 +102,23 @@ namespace Adda.Controllers
                 
             return RedirectToAction("Index");
         }
-    }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPostComment(PostCommentVM postCommentVM)
+        {
+            int loggedInUserId = 1;
+            var newComment = new Comment()
+            {
+                UserId = loggedInUserId,
+                PostId = postCommentVM.PostId,           
+                Content = postCommentVM.Content,
+                DateCreated = DateTime.UtcNow,
+                DateUpdated = DateTime.UtcNow,
+                
+            };
+            await _context.Comments.AddAsync(newComment);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+}
 }

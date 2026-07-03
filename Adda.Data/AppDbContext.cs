@@ -12,6 +12,7 @@ namespace Adda.Data
         public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Like> Likes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -22,6 +23,7 @@ namespace Adda.Data
                 .HasForeignKey(p => p.UserId);
             modelBuilder.Entity<Like>()
                 .HasKey(l => new { l.PostId, l.UserId });
+
             modelBuilder.Entity<Like>()
                 .HasOne(l => l.Post)
                 .WithMany(p => p.Likes)
@@ -30,6 +32,19 @@ namespace Adda.Data
             modelBuilder.Entity<Like>()
                 .HasOne(l => l.User)
                 .WithMany(u => u.Likes)
+                .HasForeignKey(l => l.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //Comments
+            modelBuilder.Entity<Comment>()
+               .HasOne(l => l.Post)
+               .WithMany(p => p.Comments)
+               .HasForeignKey(p => p.UserId)
+               .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(l => l.User)
+                .WithMany(u => u.Comments)
                 .HasForeignKey(l => l.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 

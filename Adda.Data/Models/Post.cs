@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 
 namespace Adda.Data.Models
 {
@@ -19,5 +20,7 @@ namespace Adda.Data.Models
         //Navigation property to the User
         public User User { get; set; }
         public ICollection<Like> Likes { get; set; } = new List<Like>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
     }
 }
