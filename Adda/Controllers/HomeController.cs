@@ -20,11 +20,10 @@ namespace Adda.Controllers
         public async Task<IActionResult> Index()
         {
             var allPosts = await _context.Posts
-                .OrderByDescending(p => p.DateCreated)
+                .OrderByDescending(n => n.DateCreated)
                 .Include(n => n.User)
+                .Include(n => n.Likes)                
                 .ToListAsync();
-
-
             return View(allPosts);
         }
 
@@ -71,6 +70,35 @@ namespace Adda.Controllers
             await _context.SaveChangesAsync();
 
             //Redirect to the index page
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> TogglePostLike(PostLikeVm postLikeVm)
+        {
+            int loggedInUserId = 1;
+
+            //check if the user has already liked the post
+            var like = await _context.Likes
+                .Where(l => l.PostId == postLikeVm.PostId && l.UserId == loggedInUserId)
+                .FirstOrDefaultAsync();
+
+            if(like != null)
+            {
+                _context.Likes.Remove(like);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var newLike = new Like
+                {
+                    PostId = postLikeVm.PostId,
+                    UserId = loggedInUserId
+                };
+                await _context.Likes.AddAsync(newLike);
+                await _context.SaveChangesAsync();
+            }
+                
             return RedirectToAction("Index");
         }
     }
